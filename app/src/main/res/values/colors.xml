@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#003265</color>
+    <color name="colorPrimaryDark">#00254a</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="album_title">#4c4c4c</color>
+    <color name="blue">#0040ff</color>
+    <color name="back_color">#e2edf8</color>
+    <color name="stoli">#2b7623</color>
+    <color name="background">#b3bab2</color>
+    <color name="color_save">#4bc26d</color>
+    <color name="color_cansel">#d7474c</color>
+    <color name="color_table">#6dcf84</color>
+    <color name="colorText">#202020</color>
+
+    <color name="colorHeader">#c9c2c4</color>
+    <color name="dinar_red">#dc5857</color>
+    <color name="dinar_dark">#302222</color>
+    <color name="request_grey">#e9e9e9</color>
+
+    <color name="black_overlay">#000000</color>
+    <color name="light_green">#2fc94e</color>
+    <color name="white">#ffffff</color>
+    <color name="greet_dinar_status">#53eaae</color>
+    <color name="orange_dinar_status">#ffa54a</color>
+    <color name="orange_blue_status">#5988ff</color>
+
+</resources>

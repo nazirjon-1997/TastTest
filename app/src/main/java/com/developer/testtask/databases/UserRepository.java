@@ -2,8 +2,6 @@ package com.developer.testtask.databases;
 
 import com.developer.testtask.models.User;
 
-import java.util.List;
-
 import io.reactivex.Flowable;
 
 public class UserRepository implements IUserDataSource {
@@ -33,11 +31,6 @@ public class UserRepository implements IUserDataSource {
     }
 
     @Override
-    public Flowable<List<User>> getAllUsers() {
-        return mLocalDataSource.getAllUsers();
-    }
-
-    @Override
     public void insertUser(User... users) {
         mLocalDataSource.insertUser(users);
     }
@@ -52,13 +45,4 @@ public class UserRepository implements IUserDataSource {
         mLocalDataSource.updateUserPass(users);
     }
 
-    @Override
-    public void deleteUser(User... users) {
-        mLocalDataSource.deleteUser(users);
-    }
-
-    @Override
-    public void deleteAllUsers() {
-        mLocalDataSource.deleteAllUsers();
-    }
 }

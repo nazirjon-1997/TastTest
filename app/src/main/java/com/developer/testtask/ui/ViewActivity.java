@@ -27,20 +27,6 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class ViewActivity extends AppCompatActivity {
-
-    private ListView firstUser;
-
-    //Adapter
-    List<User> userList = new ArrayList<>();
-    UsersAdapter adapter;
-
-    RecyclerView recyclerView;
-
-
-
-    //Database
-    private CompositeDisposable compositeDisposable;
-    private UserRepository userRepository;
     TextView nameView, emailView;
     String email, name;
     int id;
@@ -50,18 +36,6 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
         nameView = findViewById(R.id.nameView);
         emailView = findViewById(R.id.emailView);
-        //Init
-        compositeDisposable = new CompositeDisposable();
-
-        //Init View
-        recyclerView = findViewById(R.id.firstUsers);
-
-        //Database
-        UserDatabase userDatabase = UserDatabase.getInstance(this); //Create database
-        userRepository = UserRepository.getInstance(UserDataSource.getInstance(userDatabase.userDAO()));
-
-        // Load all data Database
-//        loadData();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -73,32 +47,5 @@ public class ViewActivity extends AppCompatActivity {
             emailView.setText(email);
         }
 
-    }
-
-    private void loadData() {
-        //Use RxJava
-        Disposable disposable = userRepository.getAllUsers()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<List<User>>() {
-                    @Override
-                    public void accept(List<User> users) throws Exception {
-                        onGetAllUserSuccess(users);
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Toast.makeText(ViewActivity.this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-        compositeDisposable.add(disposable);
-    }
-
-    private void onGetAllUserSuccess(List<User> users) {
-
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
-        recyclerView.setLayoutManager(mLayoutManager);
-        adapter = new UsersAdapter(this, users);
-        recyclerView.setAdapter(adapter);
     }
 }

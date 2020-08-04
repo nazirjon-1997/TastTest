@@ -4,7 +4,6 @@ package com.developer.testtask.local;
 import com.developer.testtask.databases.IUserDataSource;
 import com.developer.testtask.models.User;
 
-import java.util.List;
 
 import io.reactivex.Flowable;
 
@@ -34,12 +33,6 @@ public class UserDataSource implements IUserDataSource {
         return userDAO.getUserEmailPassword(email, password);
     }
 
-
-    @Override
-    public Flowable<List<User>> getAllUsers() {
-        return userDAO.getAllUsers();
-    }
-
     @Override
     public void insertUser(User... users) {
         userDAO.insertUser(users);
@@ -56,14 +49,4 @@ public class UserDataSource implements IUserDataSource {
         userDAO.updateUserPass(users);
     }
 
-    @Override
-    public void deleteUser(User... users) {
-        userDAO.deleteUser(users);
-    }
-
-    @Override
-    public void deleteAllUsers() {
-        userDAO.deleteAllUsers();
-
-    }
 }
